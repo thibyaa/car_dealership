@@ -9,4 +9,4 @@ stephanJames.addCarToStock(bmw330e);
 stephanJames.addCarToStock(bmw30e);
 stephanJames.addCarToStock(corsa);
 
-console.log(stephanJames.carFromSpecificManufacturers('bmw'));
+console.log(stephanJames.valueOfCars());

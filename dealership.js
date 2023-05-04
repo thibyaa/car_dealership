@@ -32,8 +32,8 @@ Dealership.prototype.carFromSpecificManufacturers = function (manufacturerName){
 
 // this method doesn't work
 Dealership.prototype.valueOfCars = function(){
-    this.carsInStock.reduce((accumulator, car) => {
-        console.log(accumulator + car.price)
+    return this.carsInStock.reduce((accumulator, car) => {
+        return accumulator + car.price
     }, 0);
 }
 

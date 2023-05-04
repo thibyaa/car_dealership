@@ -67,4 +67,10 @@ describe('Car associated functions', () => {
         expect(actual).toEqual(expected);
     });
 
+    test('calculate value of cars', () => {
+        stephanJames.addCarToStock(bmw330e);
+        stephanJames.addCarToStock(corsa);
+        expect(stephanJames.valueOfCars()).toBe(35000);
+    })
+
 })
