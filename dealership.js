@@ -5,19 +5,31 @@ const Dealership = function(name, maxNumberOfCars, carsInStock){
 } 
 
 Dealership.prototype.countNumberOfCarsInStock = function(){
-    console.log(this.carsInStock.length);
+    return this.carsInStock.length;
 }
 
 Dealership.prototype.addCarToStock = function(car){
     this.carsInStock.push(car);
 }
 
-// Return an array containing each car's manufacturer
-// Find all the cars from a given manufacturer
-// Find the total value of all the cars in stock
+Dealership.prototype.getCarManufacturers = function(){
+    this.carsInStock.map(car => console.log(car.manufacturer));
+}
 
-// Dealership.prototype.getCarManufacturers = function(car){
-    
-// }
+
+Dealership.prototype.carFromSpecificManufacturers = function (manufacturerName){
+    this.carsInStock.map(car => {
+        if(car.manufacturer === manufacturerName){
+            console.log(car);
+        }
+    })
+}
+
+// this method doesn't work
+Dealership.prototype.valueOfCars = function(){
+    this.carsInStock.reduce((accumulator, car) => {
+        console.log(accumulator + car.price)
+    }, 0);
+}
 
 module.exports = Dealership;
