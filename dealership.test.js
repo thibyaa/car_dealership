@@ -1,14 +1,17 @@
 const Dealership = require('./dealership');
 const Car = require('./car');
+const Customer = require('./customer');
 
 let stephanJames;
 let bmw330e;
 let corsa;
+let anna;
 
 beforeEach(() => {
     stephanJames = new Dealership("Stephan James", 200, []);
     bmw330e = new Car("bmw", 30000, "1998cc");
     corsa = new Car('vauxhall', 5000, "1242cc");
+    anna = new Customer('Anna', 50000);
 });
 
 describe('Access Delearship properties', () => {
@@ -59,7 +62,6 @@ describe('Car associated functions', () => {
         expect(actual).toStrictEqual(expected);
     });
 
-    // test do not work
     test('get car(s) by manufacturer name', () => {
         stephanJames.addCarToStock(bmw330e);
         const expected = [{manufacturer: 'bmw', price: 30000, engine: '1998cc' }]
@@ -71,6 +73,16 @@ describe('Car associated functions', () => {
         stephanJames.addCarToStock(bmw330e);
         stephanJames.addCarToStock(corsa);
         expect(stephanJames.valueOfCars()).toBe(35000);
+    });
+})
+
+describe('Customer associated methods', () => {
+    test('customer can buy a car',() => {
+// why does the order change?
+        const expected = [{manufacturer: 'bmw', price: 30000, engine: '1998cc'}];
+        const actual = stephanJames.sellCar(anna, bmw330e);
+        expect(actual).toBe(expected);
     })
 
-})
+
+});
