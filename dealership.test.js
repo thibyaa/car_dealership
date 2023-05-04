@@ -41,18 +41,30 @@ describe('Stock associated functions', () => {
         stephanJames.addCarToStock(corsa);
         expect(stephanJames.countNumberOfCarsInStock()).toBe(2);
     });
+
+    test('do NOT add car to stock', () => {
+        stephanJames.maxNumberOfCars = 1
+        stephanJames.addCarToStock(bmw330e);
+        stephanJames.addCarToStock(corsa);
+        expect(stephanJames.countNumberOfCarsInStock()).toBe(1);
+    });
+
 })
 
 describe('Car associated functions', () => {
-    test('check manufacturer', () => {
+    test('get names of all manufacturers', () => {
         stephanJames.addCarToStock(bmw330e);
-        expect(stephanJames.getCarManufacturers()).toBe("bmw");
+        const expected = ["bmw"];
+        const actual = stephanJames.getCarManufacturers();
+        expect(actual).toStrictEqual(expected);
     });
 
-    test.skip('get by manufacturer name', () => {
+    // test do not work
+    test('get car(s) by manufacturer name', () => {
         stephanJames.addCarToStock(bmw330e);
-        expect(stephanJames.carFromSpecificManufacturers('bmw').toStrictEqual({ 
-            manufacturer: 'bmw', price: 30000, engine: '1998cc' }));
+        const expected = [{manufacturer: 'bmw', price: 30000, engine: '1998cc' }]
+        const actual = stephanJames.carFromSpecificManufacturers('bmw');
+        expect(actual).toEqual(expected);
     });
 
 })

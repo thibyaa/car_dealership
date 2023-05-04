@@ -9,19 +9,24 @@ Dealership.prototype.countNumberOfCarsInStock = function(){
 }
 
 Dealership.prototype.addCarToStock = function(car){
-    this.carsInStock.push(car);
+    if(this.carsInStock.length < this.maxNumberOfCars){
+    // why do I not need a return statement here?
+        this.carsInStock.push(car);
+    } else {
+        return "Not enough space";
+    }
 }
 
 Dealership.prototype.getCarManufacturers = function(){
-    this.carsInStock.map(car => console.log(car.manufacturer));
+    return this.carsInStock.map(car => car.manufacturer);
 }
 
 
 Dealership.prototype.carFromSpecificManufacturers = function (manufacturerName){
-    this.carsInStock.map(car => {
+    return this.carsInStock.filter(car => {
         if(car.manufacturer === manufacturerName){
-            console.log(car);
-        }
+            return car;
+        } 
     })
 }
 
